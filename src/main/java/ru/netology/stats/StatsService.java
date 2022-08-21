@@ -16,11 +16,7 @@ public class StatsService {
 
     public long averageSales(long[] arrMonth) {
 
-        long sum = 0;
-        for (long oneMonth : arrMonth) {
-
-            sum += oneMonth;
-        }
+        long sum = sumSales(arrMonth);
         return sum / arrMonth.length;
 
     }
@@ -38,7 +34,6 @@ public class StatsService {
         return maxMonth + 1;
     }
 
-
     public int minSales(long[] sales) {
         int minMonth = 0;
         int month = 0;
@@ -54,38 +49,29 @@ public class StatsService {
 
     public long underAverageSales(long[] arrMonth) {
 
-        long sum = 0;
+        long averageSales = averageSales(arrMonth);
         long countMonth = 0;
-        for (long oneMonth : arrMonth) {
-            sum += oneMonth;
-        }
-        long average = sum / arrMonth.length;
+
 
         for (long oneMonth : arrMonth) {
-            if (oneMonth < average) {
+            if (oneMonth < averageSales) {
                 countMonth += 1;
             }
         }
         return countMonth;
-
     }
 
     public long overAverageSales(long[] arrMonth) {
 
-        long sum = 0;
+        long averageSales = averageSales(arrMonth);
         long countMonth = 0;
-        for (long oneMonth : arrMonth) {
-            sum += oneMonth;
-        }
-        long average = sum / arrMonth.length;
 
         for (long oneMonth : arrMonth) {
-            if (oneMonth > average) {
+            if (oneMonth > averageSales) {
                 countMonth += 1;
             }
         }
         return countMonth;
-
     }
 
 }
